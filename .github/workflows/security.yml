@@ -1,0 +1,14 @@
+name: Use Central Security Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  run-central-pipeline:
+    uses: HydMonk/CentralSecPipeline/.github/workflows/security.yml@main
+    with:
+      language: 'node'
+    secrets:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
